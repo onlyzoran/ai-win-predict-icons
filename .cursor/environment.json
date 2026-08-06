@@ -1,0 +1,17 @@
+{
+  "name": "ai-win-predict-icons",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "playground",
+      "command": "npm run dev",
+      "description": "Vite dev server for the icon gallery playground (http://localhost:5173). Supports search, size/stroke sliders, and dark mode."
+    }
+  ],
+  "ports": [
+    {
+      "name": "playground",
+      "port": 5173
+    }
+  ]
+}

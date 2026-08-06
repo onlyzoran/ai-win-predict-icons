@@ -2,6 +2,7 @@ import { IconBallAmericanFootball } from './icons/IconBallAmericanFootball'
 import { IconBallBaseball } from './icons/IconBallBaseball'
 import { IconBallBasketball } from './icons/IconBallBasketball'
 import { IconBallFootball } from './icons/IconBallFootball'
+import { IconBallRugby } from './icons/IconBallRugby'
 import { IconBallTennis } from './icons/IconBallTennis'
 import { IconFlag } from './icons/IconFlag'
 import { IconGolf } from './icons/IconGolf'
@@ -20,6 +21,7 @@ export type SportIconKey =
   | 'golf'
   | 'politics'
   | 'tennis'
+  | 'rugby'
 
 export const sportIcons: Record<SportIconKey, IconComponent> = {
   football: IconBallFootball,
@@ -31,4 +33,5 @@ export const sportIcons: Record<SportIconKey, IconComponent> = {
   golf: IconGolf,
   politics: IconFlag,
   tennis: IconBallTennis,
+  rugby: IconBallRugby,
 }

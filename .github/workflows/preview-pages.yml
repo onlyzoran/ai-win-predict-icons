@@ -1,0 +1,47 @@
+name: Deploy PR playground preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+# Share group with main Pages deploy to avoid racing pushes to gh-pages
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        if: github.event.action != 'closed'
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install and build playground
+        if: github.event.action != 'closed'
+        env:
+          PLAYGROUND_BASE: /ai-win-predict-icons/pr-preview/pr-${{ github.event.number }}/
+        run: |
+          npm ci
+          npm run build:playground
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./playground-dist/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          # Avoid failing the job when Pages briefly errors during concurrent updates
+          wait-for-pages-deployment: false

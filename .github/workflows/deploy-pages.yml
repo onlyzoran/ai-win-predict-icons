@@ -6,16 +6,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: github-pages
+  cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -24,17 +22,15 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build:playground
-      - uses: actions/upload-pages-artifact@v5
+      - name: Build playground
+        env:
+          PLAYGROUND_BASE: /ai-win-predict-icons/
+        run: npm run build:playground
+      # clean + clean-exclude: only playground output, keep open PR previews
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: playground-dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
+          folder: playground-dist
+          branch: gh-pages
+          clean: true
+          clean-exclude: |
+            pr-preview

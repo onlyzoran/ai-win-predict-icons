@@ -96,12 +96,25 @@ npm link @onlyzoran/ai-win-predict-icons
 
 ## Превью иконок
 
+Локально:
+
 ```bash
 npm install
 npm run dev
 ```
 
-Галерея: `http://localhost:5173` (поиск, size/stroke, тёмная тема, клик копирует имя).
+Откроется галерея на `http://localhost:5173` (поиск, size/stroke, тёмная тема, клик копирует имя).
+
+Публичный каталог: [GitHub Pages](https://onlyzoran.github.io/ai-win-predict-icons/) (деплой из `main` на ветку `gh-pages`).
+
+**Настройки репозитория (один раз):**
+
+1. **Settings → Pages → Source:** Deploy from a branch → Branch `gh-pages` / `/ (root)`.
+2. **Settings → Actions → General → Workflow permissions:** Read and write permissions.
+
+Для pull request Actions собирает playground и деплоит превью; в PR появится комментарий со ссылкой вида  
+`https://onlyzoran.github.io/ai-win-predict-icons/pr-preview/pr-<N>/`.  
+После закрытия PR превью удаляется.
 
 ## Разработка
 
@@ -112,13 +125,31 @@ npm run build:playground
 npm run type-check
 ```
 
+Сборка: Vite library mode → `dist/index.js` + декларации через `tsc`. Playground → `playground-dist/` (для Pages).
+
 ## Публикация в GitHub Packages
 
+После мержа в `main` workflow **Release package** сам поднимает версию и публикует пакет.
+
+| Как задать bump | Результат |
+| --- | --- |
+| новые файлы в `src/icons/` с прошлого релиза | `minor` |
+| без новых иконок | `patch` |
+| `[major]` / `[minor]` / `[patch]` в сообщении коммита | принудительно |
+| `[skip release]` | не публиковать |
+
+Вручную: **Actions → Release package → Run workflow** (выбор patch / minor / major).
+
+Локально (если нужно):
+
 ```bash
-export NODE_AUTH_TOKEN=ghp_xxxxxxxx
-npm run build
+export NODE_AUTH_TOKEN=ghp_xxxxxxxx   # write:packages
+npm version patch|minor|major
 npm publish
+git push && git push --tags
 ```
+
+`prepublishOnly` запускает `build` перед publish. Registry: `https://npm.pkg.github.com` (см. `.npmrc`).
 
 ## Структура
 

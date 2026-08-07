@@ -10,6 +10,7 @@ import { IconFlag } from './icons/IconFlag'
 import { IconGolf } from './icons/IconGolf'
 import { IconHockey } from './icons/IconHockey'
 import { IconSteeringWheel } from './icons/IconSteeringWheel'
+import { IconVolleyball } from './icons/IconVolleyball'
 import type { IconComponent } from './types'
 
 /** Keys aligned with ai-win-predict `Sport` / `sportIcons`. */
@@ -26,6 +27,7 @@ export type SportIconKey =
   | 'rugby'
   | 'boxing'
   | 'waterPolo'
+  | 'volleyball'
 
 export const sportIcons: Record<SportIconKey, IconComponent> = {
   football: IconBallFootball,
@@ -40,4 +42,5 @@ export const sportIcons: Record<SportIconKey, IconComponent> = {
   rugby: IconBallRugby,
   boxing: IconBoxingGlove,
   waterPolo: IconWaterPolo,
+  volleyball: IconVolleyball,
 }

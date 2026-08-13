@@ -5,6 +5,7 @@ import { IconBallFootball } from './icons/IconBallFootball'
 import { IconBallRugby } from './icons/IconBallRugby'
 import { IconBallTennis } from './icons/IconBallTennis'
 import { IconBoxingGlove } from './icons/IconBoxingGlove'
+import { IconDarts } from './icons/IconDarts'
 import { IconWaterPolo } from './icons/IconWaterPolo'
 import { IconFlag } from './icons/IconFlag'
 import { IconGolf } from './icons/IconGolf'
@@ -28,6 +29,7 @@ export type SportIconKey =
   | 'boxing'
   | 'waterPolo'
   | 'volleyball'
+  | 'darts'
 
 export const sportIcons: Record<SportIconKey, IconComponent> = {
   football: IconBallFootball,
@@ -43,4 +45,5 @@ export const sportIcons: Record<SportIconKey, IconComponent> = {
   boxing: IconBoxingGlove,
   waterPolo: IconWaterPolo,
   volleyball: IconVolleyball,
+  darts: IconDarts,
 }

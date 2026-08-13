@@ -10,6 +10,7 @@ import { IconWaterPolo } from './icons/IconWaterPolo'
 import { IconFlag } from './icons/IconFlag'
 import { IconGolf } from './icons/IconGolf'
 import { IconHockey } from './icons/IconHockey'
+import { IconMma } from './icons/IconMma'
 import { IconSteeringWheel } from './icons/IconSteeringWheel'
 import { IconVolleyball } from './icons/IconVolleyball'
 import type { IconComponent } from './types'
@@ -27,6 +28,7 @@ export type SportIconKey =
   | 'tennis'
   | 'rugby'
   | 'boxing'
+  | 'mma'
   | 'waterPolo'
   | 'volleyball'
   | 'darts'
@@ -43,6 +45,7 @@ export const sportIcons: Record<SportIconKey, IconComponent> = {
   tennis: IconBallTennis,
   rugby: IconBallRugby,
   boxing: IconBoxingGlove,
+  mma: IconMma,
   waterPolo: IconWaterPolo,
   volleyball: IconVolleyball,
   darts: IconDarts,

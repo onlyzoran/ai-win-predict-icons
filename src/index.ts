@@ -14,6 +14,7 @@ export { IconWaterPolo } from './icons/IconWaterPolo'
 export { IconFlag } from './icons/IconFlag'
 export { IconGolf } from './icons/IconGolf'
 export { IconHockey } from './icons/IconHockey'
+export { IconMma } from './icons/IconMma'
 export { IconSteeringWheel } from './icons/IconSteeringWheel'
 export { IconVolleyball } from './icons/IconVolleyball'
 
